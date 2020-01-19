@@ -1,0 +1,29 @@
+﻿@model SprintOApp.ViewModels.CreateSprintViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "New Sprint";
+    Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+<h2>New Sprint</h2>
+@using (Html.BeginForm("Create", "Dashboard"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.Name)
+        @Html.TextBoxFor(m => m.Sprint.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.SprintAccessId)
+        @Html.DropDownListFor(m => m.Sprint.SprintAccessId, new SelectList(Model.SprintAccess, "Id", "AccessType"), "Select Access Type", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.SprintTypeId)
+        @Html.DropDownListFor(m => m.Sprint.SprintTypeId, new SelectList(Model.SprintType, "Id", "Typof"), "Select Sprint Type", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary" >Create</button>
+
+}
+
+

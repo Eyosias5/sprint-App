@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SprintOApp.Models.Sprint>
+@{
+    ViewBag.Title = "Sprints";
+    Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+
+<h2>Your Sprints</h2>
+@if (!Model.Any())
+{
+    <p>You dont have any Sprints at the Moment</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Sprint</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var sprint in Model)
+            {
+                <tr>
+            <td>@Html.ActionLink(sprint.Name, "SprintDetails", "Dashboard", new { id = sprint.Id},null)</td>
+            
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
